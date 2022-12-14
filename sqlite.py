@@ -8,11 +8,12 @@ except:
 else:
     print("DB connect success")
 
-#create table and set attributes
+food_db_cur = food_db_conn.cursor()
 
-food_db_c = food_db_conn.cursor()
+#create table and set attributes
+"""
 try:
-    food_db_c.execute(
+    food_db_cur.execute(
     '''
     CREATE TABLE FOODLIST
     (
@@ -24,6 +25,38 @@ except:
     print("DB TABLE create fail")
 else:
     print("DB TABLE create success")
+"""
+
+#ALTER FOODLIST
+"""
+try:
+    food_db_cur.execute(
+        '''
+        ALTER TABLE FOODLIST ADD COLUMN
+        TIME TEXT NOT NULL;
+        '''
+    )
+except:
+    print("ALTER FOODLIST fail")
+else:
+    print("ALTER FOODLIST success")
+"""
+
+
+#INSERT FOODLIST
+"""
+try:
+    food_db_cur.execute(
+        '''
+        INSERT INTO FOODLIST (ID,TIME)
+        VALUES ('001','breakfirst')
+        '''
+        )
+except:
+    print("INSERT FOODLIST fail")
+else:
+    print("INSERT FOODLIST success")
+"""
 
 #commit database
 try:
@@ -33,6 +66,12 @@ except:
 else:
     print("DB commit success")
 
+#print table
+cursor = food_db_cur.execute('''SELECT ID, TIME FROM FOODLIST;''')
+for row in cursor:
+    print("ID = ", row[0])
+    print("TIME = ", row[1], "\n")
+
 #close database
 try:
     food_db_conn.close()
@@ -40,3 +79,7 @@ except:
     print("DB close fail")
 else:
     print("DB close success")
+    
+
+
+
