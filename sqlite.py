@@ -24,21 +24,6 @@ for i in range(0,10):
     else:
         print("INSERT FOODLIST success")
 
-
-#DELETE FOODLIST
-"""
-try:
-    food_db_cur.execute(
-        '''
-        DELETE from FOODLIST where ID='001';
-        '''
-        )
-except:
-    print("DELETE FOODLIST fail")
-else:
-    print("DELETE FOODLIST success")
-"""
-
 #commit database
 try:
     food_db_conn.commit()
