@@ -10,52 +10,33 @@ else:
 
 food_db_cur = food_db_conn.cursor()
 
-#create table and set attributes
-"""
-try:
-    food_db_cur.execute(
-    '''
-    CREATE TABLE FOODLIST
-    (
-        ID TEXT PRIMARY KEY NOT NULL
-    );
-    '''
-)
-except:
-    print("DB TABLE create fail")
-else:
-    print("DB TABLE create success")
-"""
-
-#ALTER FOODLIST
-"""
-try:
-    food_db_cur.execute(
-        '''
-        ALTER TABLE FOODLIST ADD COLUMN
-        TIME TEXT NOT NULL;
-        '''
-    )
-except:
-    print("ALTER FOODLIST fail")
-else:
-    print("ALTER FOODLIST success")
-"""
-
-
 #INSERT FOODLIST
+for i in range(0,10):
+    try:
+        food_db_cur.execute(
+            '''
+            INSERT INTO FOODLIST (ID,TIME,NAME,FEATURE)
+            VALUES ('{}','breakfirst','{}','{}')
+            '''.format(str(i),str(i),str(i))
+            )
+    except:
+        print("INSERT FOODLIST fail")
+    else:
+        print("INSERT FOODLIST success")
+
+
+#DELETE FOODLIST
 """
 try:
     food_db_cur.execute(
         '''
-        INSERT INTO FOODLIST (ID,TIME)
-        VALUES ('001','breakfirst')
+        DELETE from FOODLIST where ID='001';
         '''
         )
 except:
-    print("INSERT FOODLIST fail")
+    print("DELETE FOODLIST fail")
 else:
-    print("INSERT FOODLIST success")
+    print("DELETE FOODLIST success")
 """
 
 #commit database
@@ -65,12 +46,6 @@ except:
     print("DB commit fail")
 else:
     print("DB commit success")
-
-#print table
-cursor = food_db_cur.execute('''SELECT ID, TIME FROM FOODLIST;''')
-for row in cursor:
-    print("ID = ", row[0])
-    print("TIME = ", row[1], "\n")
 
 #close database
 try:
