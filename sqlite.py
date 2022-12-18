@@ -10,16 +10,15 @@ else:
 
 food_db_cur = food_db_conn.cursor()
 
-food_list=[{'ID':'1','TIME':'br','NAME':'維克美','FEATURE':'美式'}]
+food_list = [{'ID': '1', 'TIME': 'br', 'NAME': '維克美', 'FEATURE': '美式'}]
 #INSERT FOODLIST
 try:
-    for i in range(0,len(food_list)):
-        food_db_cur.execute(
-            '''
+    for i in range(0, len(food_list)):
+        food_db_cur.execute('''
             INSERT INTO FOODLIST (ID,TIME,NAME,FEATURE)
             VALUES ('{}','{}','{}','{}')
-            '''.format(food_list[i]["ID"],food_list[i]["TIME"],food_list[i]["NAME"],food_list[i]["FEATURE"])
-        )
+            '''.format(food_list[i]["ID"], food_list[i]["TIME"],
+                       food_list[i]["NAME"], food_list[i]["FEATURE"]))
 except:
     print("INSERT FOODLIST fail")
 else:
@@ -40,7 +39,3 @@ except:
     print("DB close fail")
 else:
     print("DB close success")
-    
-
-
-
