@@ -2,11 +2,6 @@ from flask import Flask, request, abort
 from linebot import (LineBotApi, WebhookHandler)
 from line_chatbot_api import *
 from linebot.exceptions import (InvalidSignatureError)
-from linebot.models import (
-    MessageEvent,
-    TextMessage,
-    TextSendMessage,
-)
 from azure_speech_service import *
 import json
 import re
