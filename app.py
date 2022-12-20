@@ -57,9 +57,11 @@ def handle_audio_message(event):
     message_to_wav(message_content, filename_wav)
     text = transcribe_from_file(filename_wav)
     print('Transcribe:', text)
+    """
     if '找餐廳' in text:
         user_choices = {'style': '', 'meal': '', 'day': '', 'review_number': '', 'review_star': ''}
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '料理風格、早午晚餐、星期幾、評論數、評論星星'))
+    """
     for choice in choices_list:
         for c in choice:
             if c in text:
