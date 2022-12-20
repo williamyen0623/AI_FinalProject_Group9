@@ -54,7 +54,7 @@ query_message = {   'style': '請問是要查詢哪種料理風格的餐廳呢�
                                     }
     
 def handle_audio_message(event):
-    message_content = line_bot_api.get_message_content(event.message.id)
+    message_content = line_bot_api.get_message_content(event)
     filename_wav = 'temp_audio.wav'
     message_to_wav(message_content, filename_wav)
     text = transcribe_from_file(filename_wav)
