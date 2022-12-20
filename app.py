@@ -31,11 +31,6 @@ def callback():
 
     return 'OK'
 
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-		message = text=event.message.text
-		line_bot_api.reply_message(event.reply_token, TextSendMessage(text = message))
-
 # handle msg
 @handler.add(MessageEvent)
 def handle_something(event):
@@ -82,6 +77,11 @@ def handle_audio_message(event):
     print('user_choices:', user_choices)
     # call service
     user_choices = {'style': '', 'meal': '', 'day': '', 'review_number': '', 'review_star': ''}
+    
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
+		message = text=event.message.text
+		line_bot_api.reply_message(event.reply_token, TextSendMessage(text = message))
 
 
 if __name__ == "__main__":
