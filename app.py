@@ -29,13 +29,14 @@ def callback():
 # handle msg
 @handler.add(MessageEvent)
 def handle_something(event):
-    if event.message.type == 'audio':
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '收到聲音了'))
-        handle_audio_message(event)
+    #if event.message.type == 'audio':
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '收到聲音了'))
+    handle_audio_message(event)
+    """    
     if event.message.type == 'text':
         recrive_text = event.message.text
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = recrive_text))
-
+    """
 
 style = ['中式', '日式', '韓式', '泰式', '美式', '歐式']
 meal = ['早餐', '午餐', '晚餐']
@@ -73,12 +74,12 @@ def handle_audio_message(event):
     print('user_choices:', user_choices)
     # call service
     user_choices = {'style': '', 'meal': '', 'day': '', 'review_number': '', 'review_star': ''}
-    
+"""
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 		message = text=event.message.text
 		line_bot_api.reply_message(event.reply_token, TextSendMessage(text = message))
-
+"""
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=5566)
