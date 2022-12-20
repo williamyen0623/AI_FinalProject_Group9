@@ -1,5 +1,5 @@
 import sqlite3
-
+from turntodict import *
 #connect database
 try:
     food_db_conn = sqlite3.connect('food_db')
@@ -10,18 +10,16 @@ else:
 
 food_db_cur = food_db_conn.cursor()
 
-food_list = [{'ID': '1', 'TIME': 'br', 'NAME': '維克美', 'FEATURE': '美式'}]
+food_list = get_all_food()
 #INSERT FOODLIST
-try:
-    for i in range(0, len(food_list)):
-        food_db_cur.execute(
-            '''INSERT INTO FOODLIST (ID,TIME,NAME,FEATURE) VALUES ('{}','{}','{}','{}')'''
-            .format(food_list[i]["ID"], food_list[i]["TIME"],
-                    food_list[i]["NAME"], food_list[i]["FEATURE"]))
-except:
-    print("INSERT FOODLIST fail")
-else:
-    print("INSERT FOODLIST success")
+for i in range(0, len(food_list)):
+    food_db_cur.execute(
+        '''INSERT INTO FOODLIST (NAME,FEATURE,OPENTIME,OPENDAY,ADDRESS,PHONENUM,RATING,RATINGTOTAL,LAT,LNG) VALUES ("{}","{}","{}","{}","{}","{}",{},{},{},{})'''
+        .format(food_list[i]["NAME"], food_list[i]["FEATURE"],
+                food_list[i]["OPENTIME"], food_list[i]["OPENDAY"],
+                food_list[i]["ADDRESS"], food_list[i]["PHONENUM"],
+                food_list[i]["RATING"], food_list[i]["RATINGTOTAL"],
+                food_list[i]["LAT"], food_list[i]["LNG"]))
 
 #commit database
 try:

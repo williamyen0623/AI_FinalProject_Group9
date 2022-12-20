@@ -30,7 +30,7 @@ def callback():
 @handler.add(MessageEvent)
 def handle_something(event):
     if event.message.type=='audio':
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '收到聲音了..'))
+        #line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '收到聲音了..'))
         handle_audio_message(event)
     if event.message.type == 'text':
         recrive_text = event.message.text
@@ -40,7 +40,7 @@ style = ['中式', '日式', '韓式', '泰式', '美式', '歐式']
 meal = ['早餐', '午餐', '晚餐']
 day = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']
 review_number = ['不限定', '0到200', '201到500', '501到1000', '1000以上']
-review_star = ['不設限', '4', '4.3', '4.5', '4.7', '5']
+review_star = ['不設限', '5', '4.3', '4.5', '4.7', '4']
 choices_list = [style, meal, day, review_number, review_star]
 choices_str = ['style', 'meal', 'day', 'review_number', 'review_star']
 user_choices = {'style': '', 'meal': '', 'day': '', 'review_number': '', 'review_star': ''}
@@ -52,28 +52,35 @@ query_message = {   'style': '請問是要查詢哪種料理風格的餐廳呢�
                                     }
     
 def handle_audio_message(event):
-    message_content = line_bot_api.get_message_content(event)
+    print('AAABBB')
+    message_content = line_bot_api.get_message_content(event.message.id)
+    print('AAABBB')
     filename_wav = 'temp_audio.wav'
+    print('AAABBB')
     message_to_wav(message_content, filename_wav)
     text = transcribe_from_file(filename_wav)
     print('Transcribe:', text)
-    """
+    
     if '找餐廳' in text:
-        user_choices = {'style': '', 'meal': '', 'day': '', 'review_number': '', 'review_star': ''}
+        for choice in choices_str:
+            user_choices[choice] = ''
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '料理風格、早午晚餐、星期幾、評論數、評論星星'))
-    """
+        return
+    
     for choice in choices_list:
         for c in choice:
             if c in text:
                 user_choices[choices_str[choices_list.index(choice)]] = c 
                 break
+    print('user_choices:', user_choices)
     for choice in choices_str:
         if user_choices[choice] == '':
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text = query_message[choice]))
             return
     print('user_choices:', user_choices)
     # call service
-    user_choices = {'style': '', 'meal': '', 'day': '', 'review_number': '', 'review_star': ''}
+    for choice in choices_str:
+        user_choices[choice] = ''
 
 
 if __name__ == "__main__":

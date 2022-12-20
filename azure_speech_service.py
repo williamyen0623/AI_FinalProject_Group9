@@ -7,7 +7,7 @@ import os
 from line_chatbot_api import *
 
 # (Resource Management -> Keys and Endpoint -> Key 1 or Key 2, Location/Region) subscription key and region for speech service
-speech_config = speechsdk.SpeechConfig(subscription="YourSpeechKey", region="eastus")
+speech_config = speechsdk.SpeechConfig(subscription="1f847fd8beac4fa88e7f261f93407fae", region="eastus")
 speech_config.speech_recognition_language = "zh-TW"
 
 def message_to_wav(message_content, filename_wav):
@@ -16,7 +16,7 @@ def message_to_wav(message_content, filename_wav):
         for chunk in message_content.iter_content():
             fd.write(chunk)
     # -i : set input file name, -y : overwrite output file if it exists, -loglevel quiet : suppress ffmpeg log output
-    os.system(f'ffmpeg -y -i {filename_mp3} {filename_wav} -loglevel quiet')
+    os.system(fr'/Users/williamyen/Desktop/Github/AI_FinalProject_Group9/ffmpeg -y -i {filename_mp3} {filename_wav} -loglevel quiet')
 
 def transcribe_from_file(filename_wav):
     audio_input = speechsdk.AudioConfig(filename = filename_wav)
