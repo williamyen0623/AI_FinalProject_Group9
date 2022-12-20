@@ -29,9 +29,9 @@ def callback():
 # handle msg
 @handler.add(MessageEvent)
 def handle_something(event):
-    #if event.message.type == 'audio':
-    line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '收到聲音了'))
-    handle_audio_message(event)
+    if event.message.type == 'audio':
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '收到聲音了'))
+        handle_audio_message(event)
     """    
     if event.message.type == 'text':
         recrive_text = event.message.text
