@@ -1,4 +1,4 @@
-from flask import Flask, request, abort
+from flask import Flask, request, abort, render_template, url_for
 from linebot import (LineBotApi, WebhookHandler)
 from line_chatbot_api import *
 from linebot.exceptions import (InvalidSignatureError)
@@ -9,7 +9,7 @@ import sqlite3
 
 app = Flask(__name__)
 
-
+# line bot route
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -26,6 +26,11 @@ def callback():
         abort(400)
 
     return 'OK'
+
+#web route
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 # handle msg
 @handler.add(MessageEvent)
