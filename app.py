@@ -135,8 +135,8 @@ def handle_audio_message(event):
         count += 1
         reply_messsage += '店名:{}\n地址:{}\n電話:{}\n評價:{}\n評論數:{}'.format(row[0], row[4], row[5], row[6], row[7])
         user_response_resturant.append(TextSendMessage(text=reply_messsage))
-        user_response_resturant.append(LocationSendMessage(title=row[0],address=row[4],latitude=row[8],longitude=row[9]))
-        if(count == 2): break
+        #user_response_resturant.append(LocationSendMessage(title=row[0],address=row[4],latitude=row[8],longitude=row[9]))
+        if(count == 5): break
     food_db_conn.commit()
     food_db_conn.close()
     line_bot_api.reply_message(event.reply_token, user_response_resturant)
