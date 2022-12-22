@@ -1,0 +1,28 @@
+.title-container {
+  width: auto;
+  height: 60px;
+  background-color: blanchedalmond;
+  margin: 5px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-us {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.title-header {
+  flex: 4;
+  display: flex;
+  justify-content: center;
+}
+
+.know-more {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
