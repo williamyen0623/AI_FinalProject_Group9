@@ -1,0 +1,64 @@
+{
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://img.onl/0zWEPM",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "http://linecorp.com/"
+    },
+    "position": "relative"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "用餐時段",
+        "weight": "bold",
+        "size": "xl",
+        "margin": "none",
+        "position": "relative",
+        "align": "start"
+      },
+      {
+        "type": "text",
+        "text": "請挑選你的用餐時段"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "早餐",
+              "text": "早餐"
+            }
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "午餐",
+              "text": "午餐"
+            }
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "晚餐",
+              "text": "晚餐"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

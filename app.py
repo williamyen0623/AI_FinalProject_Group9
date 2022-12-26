@@ -12,6 +12,7 @@ import sqlite3
 
 app = Flask(__name__)
 
+
 # line bot route
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -41,15 +42,14 @@ def handle_something(event):
     if event.message.type=='audio':
         handle_audio_message(event)
     if event.message.type == 'text':
-        recrive_text = event.message.text
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = recrive_text))
+        handle_text_message(event)
 
     
 user_choices = {'feature': '', 'meal': '', 'day': '', 'rating': ''}
 query_message = {   'feature': '請問是要查詢哪種料理風格的餐廳呢？\n中式、日式、韓式、泰式、美式、歐式',
                                     'meal': '請問是要查詢早餐、午餐還是晚餐的餐廳呢？',
                                     'day': '請問是要查詢星期一到日哪天的餐廳呢？',
-                                    'rating': '請問希望餐廳最少要有幾顆星呢？\n不設限、4顆星、4.3顆星、4.5顆星、4.7顆星、5顆星'
+                                    'rating': '請問希望餐廳最少要有幾顆星呢？\n不設限、5顆星、4顆星、3顆星'
                                     }
 def handle_audio_message(event):
     message_content = line_bot_api.get_message_content(event.message.id)
@@ -82,6 +82,73 @@ def handle_audio_message(event):
     # initial for next time use
     for choice in choices_str:
         user_choices[choice] = ''
+        
+def handle_text_message(event):
+    recrive_text = event.message.text
+    if(re.match('開始美食抉擇', recrive_text)):
+        initial_user_choices(user_choices)
+        json_path = os.path.join(os.path.split(__file__)[0], 'feature.txt')
+        with open(json_path, 'r', encoding='UTF-8') as f:
+            flexmessagestring = f.read()
+        flexmessagedict = json.loads(flexmessagestring)
+        flex_message = FlexSendMessage(
+            alt_text='給programmer看的, 不會顯示',
+            contents=flexmessagedict
+        )
+        line_bot_api.reply_message(event.reply_token, flex_message)
+
+    elif('早' in recrive_text or '午' in recrive_text or '晚' in recrive_text):
+        user_choices['meal'] = recrive_text
+        json_path = os.path.join(os.path.split(__file__)[0], 'day.txt')
+        with open(json_path, 'r', encoding='UTF-8') as f:
+            flexmessagestring = f.read()
+        flexmessagedict = json.loads(flexmessagestring)
+        flex_message = FlexSendMessage(
+            alt_text='給programmer看的, 不會顯示',
+            contents=flexmessagedict
+        )
+        line_bot_api.reply_message(event.reply_token, flex_message)
+    elif('星期' in recrive_text):
+        user_choices['day'] = recrive_text
+        json_path = os.path.join(os.path.split(__file__)[0], 'rating.txt')
+        with open(json_path, 'r', encoding='UTF-8') as f:
+            flexmessagestring = f.read()
+        flexmessagedict = json.loads(flexmessagestring)
+        flex_message = FlexSendMessage(
+            alt_text='給programmer看的, 不會顯示',
+            contents=flexmessagedict
+        )
+        line_bot_api.reply_message(event.reply_token, flex_message)
+    elif('式' in recrive_text):
+        user_choices['feature'] = recrive_text
+        json_path = os.path.join(os.path.split(__file__)[0], 'meal.txt')
+        with open(json_path, 'r', encoding='UTF-8') as f:
+            flexmessagestring = f.read()
+        flexmessagedict = json.loads(flexmessagestring)
+        flex_message = FlexSendMessage(
+            alt_text='給programmer看的, 不會顯示',
+            contents=flexmessagedict
+        )
+        line_bot_api.reply_message(event.reply_token, flex_message)
+    elif('顆星' in recrive_text or '不設限' in recrive_text):
+        user_choices['rating'] = recrive_text
+        transform_choice(user_choices)
+        user_response_resturant = get_reply_from_audio(user_choices)
+        line_bot_api.reply_message(event.reply_token, user_response_resturant)
+    elif('結束查詢' in recrive_text):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="結束查詢～謝謝使用！"))
+        set_current_count(0)
+        initial_user_choices(user_choices)
+    elif('顯示更多' in recrive_text):
+        user_response_resturant = get_more_rest(user_choices)
+        line_bot_api.reply_message(event.reply_token, user_response_resturant)
+    elif('隨機選餐廳' in recrive_text):
+        user_response_resturant = get_random_rest()
+        line_bot_api.reply_message(event.reply_token, user_response_resturant)
+    elif('進行語音搜尋' in recrive_text):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請傳送語音訊息\n風格:中式、日式、韓式、泰式、美式、歐式\n用餐時段:早餐、午餐、晚餐\n用餐日:星期一～星期日\n最低評價:5顆星、4顆星、3顆星、不設限"))
+    else:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "抱歉我聽不懂哦"))
             
 
             

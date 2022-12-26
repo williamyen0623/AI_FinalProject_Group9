@@ -1,0 +1,60 @@
+{
+  "size": {
+    "width": 1200,
+    "height": 810
+  },
+  "selected": true,
+  "name": "rich menu",
+  "chatBarText": "美食抉擇",
+  "areas": [
+    {
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 400,
+        "height": 810
+      },
+      "action": {
+        "type": "message",
+        "text": "開始美食抉擇"
+      }
+    },
+    {
+      "bounds": {
+        "x": 400,
+        "y": 0,
+        "width": 400,
+        "height": 810
+      },
+      "action": {
+        "type": "message",
+        "text": "進行語音搜尋"
+      }
+    },
+    {
+      "bounds": {
+        "x": 800,
+        "y": 0,
+        "width": 400,
+        "height": 405
+      },
+      "action": {
+        "type": "message",
+        "text": "隨機選餐廳"
+      }
+    },
+    {
+      "bounds": {
+        "x": 800,
+        "y": 405,
+        "width": 400,
+        "height": 405
+      },
+      "action": {
+        "type": "uri",
+        "label": "開啟Google Map",
+        "uri": "https://www.google.com.tw/maps"
+      }
+    }
+  ]
+}

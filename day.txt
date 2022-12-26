@@ -1,0 +1,153 @@
+{
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover",
+        "url": "https://img.onl/uuZ5e4"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "wrap": true,
+            "weight": "bold",
+            "size": "xl",
+            "text": "挑選日期"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "wrap": true,
+                "weight": "regular",
+                "size": "xl",
+                "flex": 0,
+                "text": "請選擇您的用餐日期"
+              }
+            ]
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "星期一",
+              "text": "星期一"
+            }
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "星期二",
+              "text": "星期二"
+            },
+            "style": "link"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "星期三",
+              "text": "星期三"
+            }
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "星期四",
+              "text": "星期四"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover",
+        "url": "https://img.onl/uEl8Yr"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "挑選日期",
+            "wrap": true,
+            "weight": "bold",
+            "size": "xl"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "wrap": true,
+                "weight": "regular",
+                "size": "xl",
+                "flex": 0,
+                "text": "請選擇您的用餐日期"
+              }
+            ]
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "星期五",
+              "text": "星期五"
+            }
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "星期六",
+              "text": "星期六"
+            },
+            "style": "link"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "星期日",
+              "text": "星期日"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -2,7 +2,7 @@ from line_chatbot_api import *
 feature = ['中式', '日式', '韓式', '泰式', '美式', '歐式']
 meal = ['早餐', '午餐', '晚餐']
 day = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']
-rating = ['不設限', '4.5顆星', '4.3顆星', '4.7顆星', '5顆星', '4顆星']
+rating = ['不設限', '5顆星', '4顆星', '3顆星']
 choices_list = [feature, meal, day, rating]
 choices_str = ['feature', 'meal', 'day', 'rating']
 #user_choices = {'feature': '', 'meal': '', 'day': '', 'rating': ''}
@@ -60,15 +60,25 @@ def transform_choice(user_choices):
     elif('日' in user_choices['day']):
         user_choices['day'] = '7'
         
-    if('4.7' in user_choices['rating']):
-        user_choices['rating'] = '4.7'
-    elif('4.5' in user_choices['rating']):
-        user_choices['rating'] = '4.5'
-    elif('4.3' in user_choices['rating']):
-        user_choices['rating'] = '4.3'
-    elif('5' in user_choices['rating']):
+    if('5' in user_choices['rating']):
         user_choices['rating'] = '5'
     elif('4' in user_choices['rating']):
         user_choices['rating'] = '4'
+    elif('3' in user_choices['rating']):
+        user_choices['rating'] = '3'
+    elif('不設限' in user_choices['rating']):
+        user_choices['rating'] = '0'
+    
+    if('五' in user_choices['rating']):
+        user_choices['rating'] = '5'
+    elif('四' in user_choices['rating']):
+        user_choices['rating'] = '4'
+    elif('三' in user_choices['rating']):
+        user_choices['rating'] = '3'
+    elif('不設限' in user_choices['rating']):
+        user_choices['rating'] = '0'
+    
+    if('泰' in user_choices['feature']):
+        user_choices['feature']='泰式'
     print('trans_choices: ', user_choices)  
     return user_choices

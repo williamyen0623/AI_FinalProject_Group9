@@ -1,0 +1,145 @@
+{
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover",
+        "url": "https://img.onl/zjQ8zV"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "餐廳風格",
+            "wrap": true,
+            "weight": "bold",
+            "size": "xl"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "wrap": true,
+                "weight": "regular",
+                "size": "xl",
+                "flex": 0,
+                "text": "請選擇您想要選擇的餐廳風格"
+              }
+            ]
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "中式",
+              "text": "中式"
+            }
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "日式",
+              "text": "日式"
+            },
+            "style": "link"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "韓式",
+              "text": "韓式"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover",
+        "url": "https://img.onl/uEl8Yr"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "餐廳風格",
+            "wrap": true,
+            "weight": "bold",
+            "size": "xl"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "wrap": true,
+                "weight": "regular",
+                "size": "xl",
+                "flex": 0,
+                "text": "請選擇您想要選擇的餐廳風格"
+              }
+            ]
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "美式",
+              "text": "美式"
+            }
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "越泰式",
+              "text": "越泰式"
+            },
+            "style": "link"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "歐式",
+              "text": "歐式"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

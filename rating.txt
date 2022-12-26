@@ -1,0 +1,72 @@
+{
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://img.onl/Mg1tkA",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "http://linecorp.com/"
+    }
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "餐廳評價",
+        "weight": "bold",
+        "size": "xl"
+      },
+      {
+        "type": "text",
+        "text": "＞請選擇餐廳的評價"
+      },
+      {
+        "type": "text",
+        "text": "我們將會為您過濾評價過低的餐廳"
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "五顆星",
+          "text": "五顆星"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "四顆星",
+          "text": "四顆星"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "三顆星",
+          "text": "三顆星"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "不設限",
+          "text": "不設限"
+        }
+      }
+    ]
+  }
+}
