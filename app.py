@@ -79,9 +79,6 @@ def handle_audio_message(event):
     user_response_resturant = get_reply_from_audio(user_choices)
 
     line_bot_api.reply_message(event.reply_token, user_response_resturant)
-    # initial for next time use
-    for choice in choices_str:
-        user_choices[choice] = ''
         
 def handle_text_message(event):
     recrive_text = event.message.text
@@ -146,6 +143,7 @@ def handle_text_message(event):
         user_response_resturant = get_random_rest()
         line_bot_api.reply_message(event.reply_token, user_response_resturant)
     elif('進行語音搜尋' in recrive_text):
+        initial_user_choices(user_choices)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請傳送語音訊息\n風格:中式、日式、韓式、泰式、美式、歐式\n用餐時段:早餐、午餐、晚餐\n用餐日:星期一～星期日\n最低評價:5顆星、4顆星、3顆星、不設限"))
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "抱歉我聽不懂哦"))
