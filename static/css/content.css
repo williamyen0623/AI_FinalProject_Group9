@@ -44,6 +44,11 @@
   width: 100%;
 }
 
+.text-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .qrcode_box {
   width: 50%;
   height: 100%;

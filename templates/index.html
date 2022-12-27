@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中央美食決策</title>
+    
+    <title>中壢美食決策</title>
+    <meta name="description" content="中壢美食決策希望能讓無法決定午餐要吃甚麼的你, 快速找到心目中最理想的店家。加入我們的Line聊天機器人來繼續下一步吧~">
+    <link rel="canonical" href="https://iot0av8z6y42imofzyjbbw.on.drv.tw/中壢美食決策/" />
     <link rel="icon" href="static/favicon.ico" type="image/gif" />
-    <link rel="bodysetting" href="./css/body.css">
+    <link rel="bodysetting" href="{{ url_for('static', filename='css/body.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/title.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/content.css') }}">
   </head>
@@ -32,13 +35,14 @@
         </div>
       </div>
       <div class="qrcode_box">
-        <div>
-          <h3><b>加入中壢美食決策群組</b></h3>
+        <div class="text-container">
+          <h3><b>歡迎加入中壢美食決策群組</b></h3>
+          <br>
+          <div style="width: 100%;">直截點擊下方QRcode即可</div>
         </div>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
-            <img alt="QR code" src="static/rick roll QR code.png">
-          </a>
-        </button>
+        <a href="https://line.me/R/ti/p/%40825bjndv" target="_blank">
+          <img alt="QR code" src="./static/Line_Bot_link.png">
+        </a>
       </div>
     </div>
   </body>
