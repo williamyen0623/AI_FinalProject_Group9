@@ -17,10 +17,11 @@ line_bot_api = LineBotApi(
 # Basic settings -> Channel secret
 handler = WebhookHandler('357b96f6d7614f9103b63b09b0483d1b')
 
-rich_menu_id = "richmenu-e0f049c1d8938d4a087ce66d0b4f958e"
+rich_menu_id = "richmenu-faf6d758bc8378f2019cf520354f2b08"
 
 headers = {"Authorization":f"Bearer XQvhTloIxWae1Sr0aCtrJ2lvcCA+dWfxyL866iE9BTeD2EcqlD2O3IFDK93bnHL1TvdJyCJNEl4HEV3eZTIVXEp2UXeZQiXLXmNOiZ0+MxH7FEUwvn2HE5bmZqnXNe+bxq3GziqRPCpijZu6NJ1B3QdB04t89/1O/w1cDnyilFU=" , "Content-Type":"application/json"}
 
+# Step1 記住richmenuid後即可註解掉
 """json_path = os.path.join(os.path.split(__file__)[0], 'rich_menu.txt')
 with open(json_path, 'r', encoding='UTF-8') as f:
 		flexmessagestring = f.read()
@@ -33,11 +34,11 @@ req = requests.request('POST',
 
 print(req.text)"""
 
+# 設定照片 只能執行一次
 """with open("./richmenu.png", 'rb') as f:
     line_bot_api.set_rich_menu_image(rich_menu_id, "image/png", f)"""
     
-# ===================================================="""
-
+# 將richmenu加進line chat bot
 req = requests.request('POST', 'https://api.line.me/v2/bot/user/all/richmenu/'+rich_menu_id,
                        headers=headers)
 print(req.text)

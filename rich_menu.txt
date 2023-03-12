@@ -53,7 +53,7 @@
       "action": {
         "type": "uri",
         "label": "開啟Google Map",
-        "uri": "https://www.google.com.tw/maps"
+        "uri": "https://www.google.com.tw/maps/@24.9767067,121.1858944,15z"
       }
     }
   ]
